@@ -1,0 +1,30 @@
+package:
+  name: libppl
+  version: "1.2"
+
+source:
+  fn: ppl-1.2.tar.gz
+  url: http://www.bugseng.com/products/ppl/download/ftp/releases/1.2/ppl-1.2.tar.gz
+  md5: 2b43339316a3139fd75c7e8ca7ddc201
+
+channels:
+  - msys2
+
+requirements:
+  build:
+    - m2w64-gmp
+    - m2w64-gcc-libs
+    - posix
+    - m2w64-gcc 
+    - m2-autoconf
+  run:
+    - m2w64-gmp
+    - m2w64-gcc-libs
+
+
+build:
+  number: 1
+
+about:
+  home: https://the-cake-is-a-lie.net/gogs/jonas/ppl_anaconda
+  license: GPL3
