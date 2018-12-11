@@ -15,5 +15,5 @@ REM Install step
 echo "install to %LIBRARY_PREFIX%"
 make install
 
-MOVE %INSTALL_PREFIX%\lib\libppl.a %INSTALL_PREFIX%\lib\libppl.lib
-MOVE %INSTALL_PREFIX%\lib\libppl_c.a %INSTALL_PREFIX%\lib\libppl_c.lib
+MOVE %INSTALL_PREFIX%\lib\libppl.a %INSTALL_PREFIX%\lib\ppl.lib
+MOVE %INSTALL_PREFIX%\lib\libppl_c.a %INSTALL_PREFIX%\lib\ppl_c.lib
