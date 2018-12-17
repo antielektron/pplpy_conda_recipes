@@ -1,0 +1,47 @@
+# This file created by conda-build 3.15.1
+# meta.yaml template originally from:
+# C:\projects\gmpy2-feedstock\recipe, last modified Mon Oct 15 09:44:56 2018
+# ------------------------------------------------
+
+package:
+    name: gmpy2
+    version: 2.1.0a1
+source:
+    url: https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-2.1.0a1.tar.gz
+build:
+    number: '1002'
+    script:
+        - python setup.py build
+        - python setup.py install
+    string: py37h7db29ea_1002
+requirements:
+    build:
+        - vs2015_win-64
+        - git
+    host:
+        - mpc >=1.0.0
+        - mpfr >=4.0.1
+        - mpir >=3.0.0
+        - python >=3.7.0
+        - vc 14
+        - vs2015_runtime
+        - git
+    run:
+        - mpc >=1.0.0,<2.0a0
+        - mpfr >=4.0.1,<5.0a0
+        - mpir
+        - python >=3.7,<3.8.0a0
+        - vc 14.*
+test:
+    imports:
+        - gmpy2
+about:
+    home: https://pypi.python.org/pypi/gmpy2
+    license: LGPL 3
+    license_file: COPYING.LESSER
+    summary: GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3.x
+extra:
+    copy_test_source_files: true
+    final: true
+    recipe-maintainers:
+        - isuruf
