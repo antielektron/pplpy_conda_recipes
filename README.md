@@ -1,3 +1,3 @@
-# pplpy_conda_recipes
+# pplpy conda recipes
 
-Anaconda recipes for ppplpy and it's dependencies
+Anaconda recipes for pplpy and it's dependencies
