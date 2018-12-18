@@ -1,0 +1,123 @@
+diff --git a/ppl/constraint.pyx b/ppl/constraint.pyx
+index fc5b9e8..463d1b1 100644
+--- a/ppl/constraint.pyx
++++ b/ppl/constraint.pyx
+@@ -1,5 +1,5 @@
+ # distutils: language = c++
+-# distutils: libraries = gmp gmpxx ppl m
++# distutils: libraries = ppl m gmp gmpxx
+ #*****************************************************************************
+ #       Copyright (C) 2010 Volker Braun  <vbraun.name@gmail.com>
+ #                     2016 Vincent Delecroix <vincent.delecroix@labri.fr>
+diff --git a/ppl/generator.pyx b/ppl/generator.pyx
+index 7a8a591..cab17d1 100644
+--- a/ppl/generator.pyx
++++ b/ppl/generator.pyx
+@@ -1,5 +1,5 @@
+ # distutils: language = c++
+-# distutils: libraries = gmp gmpxx ppl m
++# distutils: libraries = ppl m gmp gmpxx
+ #*****************************************************************************
+ #       Copyright (C) 2010 Volker Braun  <vbraun.name@gmail.com>
+ #                     2016 Vincent Delecroix <vincent.delecroix@labri.fr>
+diff --git a/ppl/linear_algebra.pyx b/ppl/linear_algebra.pyx
+index 442da39..b719fdd 100644
+--- a/ppl/linear_algebra.pyx
++++ b/ppl/linear_algebra.pyx
+@@ -1,5 +1,5 @@
+ # distutils: language = c++
+-# distutils: libraries = gmp gmpxx ppl m
++# distutils: libraries = ppl m gmp gmpxx
+ #*****************************************************************************
+ #       Copyright (C) 2010 Volker Braun  <vbraun.name@gmail.com>
+ #                     2016 Vincent Delecroix <vincent.delecroix@labri.fr>
+diff --git a/ppl/mip_problem.pyx b/ppl/mip_problem.pyx
+index 20ebc60..abf846e 100644
+--- a/ppl/mip_problem.pyx
++++ b/ppl/mip_problem.pyx
+@@ -1,5 +1,5 @@
+ # distutils: language = c++
+-# distutils: libraries = gmp gmpxx ppl m
++# distutils: libraries = ppl m gmp gmpxx
+ #*****************************************************************************
+ #       Copyright (C) 2010 Volker Braun  <vbraun.name@gmail.com>
+ #                     2016 Vincent Delecroix <vincent.delecroix@labri.fr>
+@@ -12,10 +12,16 @@
+ #*****************************************************************************
+ from __future__ import absolute_import, print_function
+ 
+-from cysignals.signals cimport sig_on, sig_off
++#from cysignals.signals cimport sig_on, sig_off
+ from gmpy2 cimport import_gmpy2, GMPy_MPQ_From_mpz
+ from cython.operator cimport dereference as deref
+ 
++def sig_on():
++    pass
++
++def sig_off():
++    pass
++
+ # PPL can use floating-point arithmetic to compute integers
+ cdef extern from "ppl.hh" namespace "Parma_Polyhedra_Library":
+     cdef void set_rounding_for_PPL()
+diff --git a/ppl/polyhedron.pyx b/ppl/polyhedron.pyx
+index 45264ed..f04d71a 100644
+--- a/ppl/polyhedron.pyx
++++ b/ppl/polyhedron.pyx
+@@ -1,5 +1,5 @@
+ # distutils: language = c++
+-# distutils: libraries = gmp gmpxx ppl m
++# distutils: libraries = ppl m gmp gmpxx
+ #*****************************************************************************
+ #       Copyright (C) 2010 Volker Braun  <vbraun.name@gmail.com>
+ #                     2016 Vincent Delecroix <vincent.delecroix@labri.fr>
+@@ -13,7 +13,7 @@
+ from __future__ import absolute_import, print_function
+ 
+ from cpython.object cimport Py_LT, Py_LE, Py_EQ, Py_NE, Py_GT, Py_GE
+-from cysignals.signals cimport sig_on, sig_off
++#from cysignals.signals cimport sig_on, sig_off
+ from gmpy2 cimport GMPy_MPZ_From_mpz, import_gmpy2
+ 
+ from .ppl_decl cimport *
+@@ -21,6 +21,12 @@ from .constraint cimport Constraint_System, Poly_Con_Relation, _wrap_Constraint_
+ from .generator cimport Generator_System, Poly_Gen_Relation, _wrap_Generator_System
+ from .linear_algebra cimport *
+ 
++def sig_on():
++    pass
++
++def sig_off():
++    pass
++
+ # PPL can use floating-point arithmetic to compute integers
+ cdef extern from "ppl.hh" namespace "Parma_Polyhedra_Library":
+     cdef void set_rounding_for_PPL()
+diff --git a/setup.py b/setup.py
+index cbf04dc..dd6c4b5 100755
+--- a/setup.py
++++ b/setup.py
+@@ -16,14 +16,6 @@ class build_ext(_build_ext):
+             sys.stderr.write("The installation of ppl requires Cython\n")
+             sys.exit(1)
+ 
+-        try:
+-            # We need the header files for cysignals at compile-time
+-            import cysignals
+-        except ImportError as E:
+-            sys.stderr.write("Error: {0}\n".format(E))
+-            sys.stderr.write("The installation of ppl requires cysignals\n")
+-            sys.exit(1)
+-
+         self.distribution.ext_modules[:] = cythonize(
+             self.distribution.ext_modules, include_path=sys.path)
+         _build_ext.finalize_options(self)
+@@ -96,7 +88,7 @@ setup(
+     packages=['ppl'],
+     package_dir={'ppl': 'ppl'},
+     package_data={'ppl': ['*.pxd', '*.h', '*.hh']},
+-    install_requires=['Cython', 'cysignals', 'gmpy2'],  # For pip install, pip can't read setup_requires
++    install_requires=['Cython', 'gmpy2'],  # For pip install, pip can't read setup_requires
+     include_dirs=['ppl'] + sys.path,
+     ext_modules=extensions,
+     classifiers=[

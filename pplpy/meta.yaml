@@ -1,0 +1,35 @@
+package:
+  name: pplpy
+  version: 0.7
+
+source:
+  patches:
+    - windows_and_msys2_compability.patch
+  git_url: https://github.com/videlec/pplpy.git
+  git_rev: 0.7
+channels:
+  - msys2
+  - local
+
+requirements:
+  build:
+    - m2w64-gcc-libs
+    - posix
+    - m2w64-gcc 
+    - m2-autoconf
+    - m2w64-tools-git
+    - cython
+    - libppl
+    - gmpy2 >=2.1.0a1
+  run:
+    - m2w64-gcc-libs
+    - libppl
+    - gmpy2 >=2.1.0a1
+
+
+build:
+  number: 1
+
+about:
+  home: https://the-cake-is-a-lie.net/gogs/jonas/pplpy_conda_win
+  license: GPL3
