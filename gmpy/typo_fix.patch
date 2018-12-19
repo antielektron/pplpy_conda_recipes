@@ -1,3 +1,16 @@
+diff --git a/setup.py b/setup.py
+index f807404..96ec403 100644
+--- a/setup.py
++++ b/setup.py
+@@ -254,7 +254,7 @@ class gmpy_build_ext(build_ext):
+         # Add the static linking options.
+ 
+         # Add MSVC specific options.
+-        if windows and not msys2:
++        if False:
+             self.extensions[0].extra_link_args.append('/MANIFEST')
+             self.extensions[0].define_macros.append(("MPIR", 1))
+             if not static:
 diff --git a/src/gmpy2_convert_gmp.c b/src/gmpy2_convert_gmp.c
 index 6447397..186419d 100644
 --- a/src/gmpy2_convert_gmp.c
