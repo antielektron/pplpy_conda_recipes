@@ -22,7 +22,7 @@ Anaconda recipes for pplpy and it's dependencies
 
 ## Downloads
 
-* testbuilds for windows and python3.7 can be found [here](https://the-cake-is-a-lie.net/nextcloud/index.php/s/fBfoHdtj5pYwNEd)
+* Download binary pakages at the [release section](https://github.com/antielektron/pplpy_conda_recipes/releases)
 
 ## Developer Notes
 
