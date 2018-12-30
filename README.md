@@ -6,7 +6,7 @@ Windows Anaconda recipes for pplpy and it's dependencies
 
 ## Build recipes
 
-* run `conda build <receipe-folder>` to build the receipe. Available Receipes are:
+* run `conda build <receipe-folder>` to build the receipe. Available recipes are:
     * [gmpy](gmpy/)
     * [ppl](ppl/)
     * [pplpy](pplpy/) (depends on gmpy and ppl)
