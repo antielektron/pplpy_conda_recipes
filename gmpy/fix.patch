@@ -1,0 +1,13 @@
+diff --git a/src/gmpy2_misc.c b/src/gmpy2_misc.c
+index 7861410..803b795 100644
+--- a/src/gmpy2_misc.c
++++ b/src/gmpy2_misc.c
+@@ -56,7 +56,7 @@ PyDoc_STRVAR(GMPy_doc_mp_version,
+ static PyObject *
+ GMPy_get_mp_version(PyObject *self, PyObject *args)
+ {
+-#ifndef __MPIR_VERSION
++#if 1
+     return Py2or3String_FromFormat("%s %s", "GMP", gmp_version);
+ #else
+     return Py2or3String_FromFormat("%s %s", "MPIR", mpir_version);

@@ -1,18 +1,15 @@
-# This file created by conda-build 3.15.1
-# meta.yaml template originally from:
-# C:\projects\gmpy2-feedstock\recipe, last modified Mon Oct 15 09:44:56 2018
-# ------------------------------------------------
 
 package:
     name: gmpy2
-    version: 2.1.0a1
+    version: 2.1.0a4_fix
 source:
     patches:
-        - typo_fix.patch
+        - fix.patch
+        - fix_ignore_typecheck.patch
     git_url: https://github.com/aleaxit/gmpy.git
-    git_rev: gmpy2-2.1.0a1
+    git_rev: b6a8ea6188352139a7d28342ee4630e14c65b7e5
 build:
-    number: '1003'
+    number: '1'
 channels:
   - msys2
   - local
@@ -24,15 +21,13 @@ requirements:
     - m2w64-gcc 
     - m2-autoconf
     - m2w64-tools-git
-    - mpc >=1.0.0
-    - mpfr >=4.0.1
-    - mpir >=3.0.0
+    - m2w64-mpc >=1.0.0
+    - m2w64-mpfr >=3.0.0
     - cython
   run:
     - m2w64-gcc-libs
-    - mpc >=1.0.0
-    - mpfr >=4.0.1
-    - mpir >=3.0.0
+    - m2w64-mpc >=1.0.0
+    - m2w64-mpfr >=3.0.0
 test:
     imports:
         - gmpy2
@@ -41,8 +36,4 @@ about:
     license: LGPL 3
     license_file: COPYING.LESSER
     summary: GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3.x
-extra:
-    copy_test_source_files: true
-    final: true
-    recipe-maintainers:
-        - isuruf
+
