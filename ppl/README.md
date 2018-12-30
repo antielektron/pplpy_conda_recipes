@@ -5,7 +5,7 @@ anaconda recipe for [ppl](https://www.bugseng.com/parma-polyhedra-library) in ve
 to build this package just run
 
 ```
-conda-build .\
+conda build .\
 ```
 
 inside the cloned recipe folder

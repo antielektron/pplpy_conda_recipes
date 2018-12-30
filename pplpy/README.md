@@ -6,7 +6,7 @@ pplpy conda recipe for [version 0.7](https://github.com/videlec/pplpy/tree/0.7)
 
 ## Build
 
-* `conda install ./`
+* `conda build ./`
 
 
 

@@ -5,7 +5,7 @@
 
 ## Build
 
-* `conda install ./`
+* `conda build ./`
 
 
 
