@@ -1,6 +1,6 @@
 # pplpy conda recipes
 
-Anaconda recipes for pplpy and it's dependencies
+Windows Anaconda recipes for pplpy and it's dependencies
 
 ----
 
