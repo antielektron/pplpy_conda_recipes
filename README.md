@@ -24,8 +24,7 @@ Anaconda recipes for pplpy and it's dependencies
 
 * testbuilds for windows and python3.7 can be found [here](https://the-cake-is-a-lie.net/nextcloud/index.php/s/fBfoHdtj5pYwNEd)
 
-
-
 ## Developer Notes
 
 * see [here](developer_notes.md)  
+

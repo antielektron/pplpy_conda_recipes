@@ -1,6 +1,6 @@
 # Developer Notes
 
-some notes about packaging stuff with anaconda on windows. For packaging in general see 
+some notes about packaging stuff with anaconda and it's [msys2 channel](https://anaconda.org/msys2) on windows. For packaging in general see 
 
 * https://conda.io/docs/user-guide/tutorials/build-pkgs.html
 
@@ -41,7 +41,7 @@ about:
   license: GPL3
 ```
 
-when building a package with `conda build` a new anaconda environment is created in `conda-bld\` in Anaconda's root folder. The required packages given in the **build** section are installed in it and then either the script `bld.bat` will be executed or a command given in `meta.yaml`'s build section (e.g. in the [gmpy receipe](gmpy/meta.yaml):
+when building a package with `conda build` a new anaconda environment is created in `conda-bld\` in Anaconda's root folder. The required packages given in the **build** section are installed in it and then either the script `bld.bat` will be executed or a command given in `meta.yaml`'s build section (for example:
 
 ```yaml
 build:
@@ -75,6 +75,20 @@ source:
   git_rev: 0.7
 ```
 
-as seen in the example above also patches can be applied during the build process which have to created with git's `diff` command.
+as seen in the example above also patches can be applied during the build process which have to created with [git's `diff` command](https://git-scm.com/docs/git-diff).
 
-`ppl` and `pplpy` are built using a mingw compiler and libraries from anaconda's [msys2 channel](https://anaconda.org/msys2)
+if there are patches for a recipe they may have to be rebuild for every new release. Therefore just clone and checkout the repository with the new version tag and make the necessary changes as described in the recipe's `README.md`. Then run
+
+```bash
+git diff > <patch_name>.patch
+```
+
+to create a patch file containing all changes made in the repository or
+
+```bash
+git diff <filename> > <patch_name>.patch
+```
+
+to make a patch only including changes made in `<filename>`
+
+Package specific information can be found inside the recipe subfolders
