@@ -22,7 +22,7 @@ Windows Anaconda recipes for pplpy and it's dependencies
 
 ## Downloads
 
-* Download binary pakages at the [release section](https://github.com/antielektron/pplpy_conda_recipes/releases)
+* Download binary packages at the [release section](https://github.com/antielektron/pplpy_conda_recipes/releases)
 
 ## Developer Notes
 
