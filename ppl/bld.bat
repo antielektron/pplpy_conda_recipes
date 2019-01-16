@@ -8,7 +8,7 @@ set "UNIX_STYLE_INSTALL_PREFIX=%INSTALL_PREFIX:\=/%"
 REM Build step
 
 sh configure --prefix=%UNIX_STYLE_INSTALL_PREFIX% --enable-shared
-make
+make -j12
 
 REM Install step
 
