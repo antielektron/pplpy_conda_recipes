@@ -21,6 +21,7 @@ requirements:
     - cython
     - libppl
     - gmpy2 >=2.1.0a1
+    - patch
   run:
     - m2w64-gcc-libs
     - libppl
